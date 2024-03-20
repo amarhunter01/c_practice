@@ -73,5 +73,175 @@ int main(){
 
     // printf("sum: %d\n", sum);
 
+    // //Hamg number
+    // int n, x;
+    // printf("Enter number:\n");
+    // scanf("%d", &n);
+    // lab1: x = n%2;
+    // if(x==0){
+    //     n /= 2;
+    //     goto lab1;
+    // }
+
+    // lab2: x = n%3;
+    // if(x==0){
+    //     n /= 3;
+    //     goto lab2;
+    // }
+
+    // lab3: x = n%5;
+    // if(x==0){
+    //     n /= 5;
+    //     goto lab3;
+    // }
+
+    // if(n==1){
+    //     printf("True\n");
+    // }else{
+    //     printf("False\n");
+    // }
+
+    // //beskonacni unos i ispis manjih brojeva u opadajucem redosljedu
+    // int x;
+    // while(1){
+    //     printf("Enter 3-digit number:\n");
+    //     scanf("%d", &x);
+    //     if(99<x && x<1000)
+    //         for(x; x>0; x--)
+    //             printf("%d\n", x);
+    //     else
+    //         break;
+    // }
+    // printf("End\n");
+
+    // //najveci broj od cifar unijetog trocifrenog broja
+    // int n, d1, d2, d3, max = 0;
+    // printf("Enter 3-digit number:\n");
+    // scanf("%d", &n);
+    // while(99>n || n>1000){
+    //     printf("Please enter a 3-digit number:\n");
+    //     scanf("%d", &n);
+    // }
+    // d1 = n/100;
+    // d2 = (n%100)/10;
+    // d3 = n%10;
+
+    // if(d1>d2 && d1>d3)
+    //     max += d1 * 100;
+    // else 
+    //     if((d1>d2 && d1<d3) || (d1<d2  && d1>d3))
+    //         max += d1 * 10;
+    //     else
+    //         max += d1;
+    
+    // if(d2>d1 && d2>d3)
+    //     max += d2 * 100;
+    // else 
+    //     if((d2>d1 && d2<d3) || (d2<d1  && d2>d3))
+    //         max += d2 * 10;
+    //     else
+    //         max += d2;
+
+    // if(d3>d1 && d3>d2)
+    //     max += d3 * 100;
+    // else 
+    //     if((d3>d1 && d3<d2) || (d3<d1  && d3>d2))
+    //         max += d3 * 10;
+    //     else
+    //         max += d3;
+        
+    // printf("Max number is: %d\n", max);
+
+    //chess attacked fields with hourse and biship
+    int h_x, h_y, b_x, b_y, count = 0, b_ax, b_ay;
+    printf("Enter x position of hourse:\n");
+    scanf("%d", &h_x);
+
+    printf("Enter y position of hourse:\n");
+    scanf("%d", &h_y);
+
+    printf("Enter x position of biship:\n");
+    scanf("%d", &b_x);
+
+    printf("Enter y position of biship:\n");
+    scanf("%d", &b_y);
+
+    if(h_x+2>0 && h_x+2<9 && h_y+1 > 0 && h_y+1 < 9 && (h_x+2 != b_x || h_y+1 != b_y))
+        count++;
+    if(h_x+1>0 && h_x+1<9 && h_y+2 > 0 && h_y+2 < 9 && (h_x+1 != b_x || h_y+2 != b_y))
+        count++;
+
+    if(h_x-1>0 && h_x-1<9 && h_y+2 > 0 && h_y+2 < 9 && (h_x-1 != b_x || h_y+2 != b_y))
+        count++;
+    if(h_x-2>0 && h_x-2<9 && h_y+1 > 0 && h_y+1 < 9 && (h_x-2 != b_x || h_y+1 != b_y))
+        count++;
+
+    if(h_x+2>0 && h_x+2<9 && h_y-1 > 0 && h_y-1 < 9 && (h_x+2 != b_x || h_y-1 != b_y))
+        count++;
+    if(h_x+1>0 && h_x+1<9 && h_y-2 > 0 && h_y-2 < 9 && (h_x+1 != b_x || h_y-2 != b_y))
+        count++;
+    
+    if(h_x-2>0 && h_x-2<9 && h_y-1 > 0 && h_y-1 < 9 && (h_x-2 != b_x || h_y-1 != b_y))
+        count++;
+    if(h_x-1>0 && h_x-1<9 && h_y-2 > 0 && h_y-2 < 9 && (h_x-1 != b_x || h_y-2 != b_y))
+        count++;
+    
+    b_ax = b_x + 1;
+    b_ay = b_y + 1;
+
+    while(b_ax > 0 && b_ay < 9 && b_ax < 9 && b_ay > 0 && ( b_ax != h_x || b_ay != h_y)){
+        if( (h_x+2 != b_ax || h_y+1 != b_ay) && (h_x+1 != b_ax || h_y+2 != b_ay) &&
+            (h_x-1 != b_ax || h_y+2 != b_ay) && (h_x-2 != b_ax || h_y+1 != b_ay) &&
+            (h_x+2 != b_ax || h_y-1 != b_ay) && (h_x+1 != b_ax || h_y-2 != b_ay) &&
+            (h_x-2 != b_ax || h_y-1 != b_ay) && (h_x-1 != b_ax || h_y-2 != b_ay)
+        )
+            count++;
+        b_ax++;
+        b_ay++;
+    }
+
+    b_ax = b_x + 1;
+    b_ay = b_y - 1;
+
+    while(b_ax > 0 && b_ay < 9 && b_ax < 9 && b_ay > 0 && ( b_ax != h_x || b_ay != h_y)){
+        if( (h_x+2 != b_ax || h_y+1 != b_ay) && (h_x+1 != b_ax || h_y+2 != b_ay) &&
+            (h_x-1 != b_ax || h_y+2 != b_ay) && (h_x-2 != b_ax || h_y+1 != b_ay) &&
+            (h_x+2 != b_ax || h_y-1 != b_ay) && (h_x+1 != b_ax || h_y-2 != b_ay) &&
+            (h_x-2 != b_ax || h_y-1 != b_ay) && (h_x-1 != b_ax || h_y-2 != b_ay)
+        )
+            count++;
+        b_ax++;
+        b_ay--;
+    }
+
+    b_ax = b_x - 1;
+    b_ay = b_y + 1;
+
+    while(b_ax > 0 && b_ay < 9 && b_ax < 9 && b_ay > 0 && ( b_ax != h_x || b_ay != h_y)){
+        if( (h_x+2 != b_ax || h_y+1 != b_ay) && (h_x+1 != b_ax || h_y+2 != b_ay) &&
+            (h_x-1 != b_ax || h_y+2 != b_ay) && (h_x-2 != b_ax || h_y+1 != b_ay) &&
+            (h_x+2 != b_ax || h_y-1 != b_ay) && (h_x+1 != b_ax || h_y-2 != b_ay) &&
+            (h_x-2 != b_ax || h_y-1 != b_ay) && (h_x-1 != b_ax || h_y-2 != b_ay)
+        )
+            count++;
+        b_ax--;
+        b_ay++;
+    }
+
+    b_ax = b_x - 1;
+    b_ay = b_y - 1;
+
+    while(b_ax > 0 && b_ay < 9 && b_ax < 9 && b_ay > 0 && ( b_ax != h_x || b_ay != h_y)){
+        if( (h_x+2 != b_ax || h_y+1 != b_ay) && (h_x+1 != b_ax || h_y+2 != b_ay) &&
+            (h_x-1 != b_ax || h_y+2 != b_ay) && (h_x-2 != b_ax || h_y+1 != b_ay) &&
+            (h_x+2 != b_ax || h_y-1 != b_ay) && (h_x+1 != b_ax || h_y-2 != b_ay) &&
+            (h_x-2 != b_ax || h_y-1 != b_ay) && (h_x-1 != b_ax || h_y-2 != b_ay)
+        )
+            count++;
+        b_ax--;
+        b_ay--;
+    }
+
+    printf("Number of attacked fields: %d\n", count);
     return 0;
 }
