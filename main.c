@@ -244,5 +244,83 @@ int main(){
 
     // printf("Number of attacked fields: %d\n", count);
 
+    // //error in h(15)
+    // char b[14];
+    // int c1=0, c2=0, c4=0, c8=0;
+
+    // for(int i = 0; i<15; i++){
+    //     scanf("%c", &b[i]);
+    // }
+
+    // for(int i = 0; i<15; i++){
+    //     if(b[i]=='1'){
+    //         switch (i+1){
+    //             case(3):{
+    //                 c1++;
+    //                 c2++;
+    //                 break;
+    //             }
+    //             case(5):{
+    //                 c1++;
+    //                 c4++;
+    //                 break;
+    //             }
+    //             case(6):{
+    //                 c2++;
+    //                 c4++;
+    //                 break;
+    //             }
+    //             case(7):{
+    //                 c1++;
+    //                 c2++;
+    //                 c4++;
+    //                 break;
+    //             }
+    //             case(9):{
+    //                 c1++;
+    //                 c8++;
+    //                 break;
+    //             }
+    //             case(10):{
+    //                 c2++;
+    //                 c8++;
+    //                 break;
+    //             }
+    //             case(11):{
+    //                 c1++;
+    //                 c2++;
+    //                 c8++;
+    //                 break;
+    //             }
+    //             case(12):{
+    //                 c4++;
+    //                 c8++;
+    //                 break;
+    //             }
+    //             case(13):{
+    //                 c1++;
+    //                 c4++;
+    //                 c8++;
+    //                 break;
+    //             }
+    //             case(14):{
+    //                 c2++;
+    //                 c4++;
+    //                 c8++;
+    //                 break;
+    //             }
+    //             case(15):{
+    //                 c1++;
+    //                 c2++;
+    //                 c4++;
+    //                 c8++;
+    //                 break;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // printf("c1: %d\nc2: %d\nc4: %d\nc8: %d\n", c1, c2, c4, c8);
+
     return 0;
 }
