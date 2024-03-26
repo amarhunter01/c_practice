@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void show_array(int a[50],int n){
     int i = 0;
@@ -26,6 +27,18 @@ void show_2d_array(int a[50][50], int n, int m){
     }
     printf("End of array\n");
 
+}
+
+int pwd(int x, int n){
+    if(n != 0){
+        for(int i = 1; i<= n; i++)
+            if(i != 1)
+                x *= x;
+                
+        return x;
+
+    }else
+        return 1;
 }
 
 int main(){
@@ -321,6 +334,33 @@ int main(){
     // }
 
     // printf("c1: %d\nc2: %d\nc4: %d\nc8: %d\n", c1, c2, c4, c8);
+
+    // //recognize a number in string and turn it to integer
+    // long long int x = 0;
+    // int ind = 1;
+    // char s[20];
+    // printf("Enter string: ");
+    // fgets(s, sizeof(s), stdin);
+    // sscanf(s, "%s", s);
+    // for(int i = 0; i<sizeof(s) && s[i]!='\0'; i++){
+    //     if(s[i]>= '0' && s[i]<= '9'){
+    //         ind = 0;
+    //         for(int j = i; s[j]>= '0' && s[j]<= '9'; j++){
+    //             int c = (int)s[j] - (int)'0';
+    //             x += c;
+    //             x *= 10;
+
+    //         }
+    //         x /= 10;
+    //         break;
+    //     }   
+    // }   
+
+
+    // if(ind)
+    //     printf("Number not found");
+    // else
+    //     printf("x: %llu\n", x);
 
     return 0;
 }
