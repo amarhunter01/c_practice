@@ -41,6 +41,38 @@ int pwd(int x, int n){
         return 1;
 }
 
+int checkString(char s[50], int s1_start, int s1_end, int s2_start, int s2_end){
+    int s1, s2;
+    if(s1_start == 0){
+        s1 = s1_end - s1_start - 1;
+    } else {
+        s1 = s1_end - s1_start;
+    }
+    s2 = s2_end - s2_start;
+
+    if( s1 == s2){
+        for(int i = s1_start, j = s2_start; i<s1_end && j<s2_end && s[i]!='\n' && s[j]!= '\n'; i++,j++){
+            if(s[i] != s[j]){
+                return 1;
+            }
+        }
+        return 0;
+    } else{
+        return 1;
+    }
+}
+
+int isSentence(char s[50], int N){
+    if(s[0]<'A' || s[0]>'Z' || s[N] != '.')
+        return 0;
+    for(int i = 1; i<N; i++){
+        if( (s[i]<'a' || s[i]>'z') && s[i]!=' ')
+            return 0;
+    }
+    return 1;
+
+}
+
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
     // //Program treba da odredi sumu elemenata iz nepranih vrsta kao i sumu elemenata na glavnoj matrici
@@ -361,6 +393,45 @@ int main(){
     //     printf("Number not found");
     // else
     //     printf("x: %llu\n", x);
+
+    // //Broj razlicitih rijeci u stringu
+    // char s[50];
+    // int I, diff = 0, limit[50];
+    // fgets(s, sizeof(s), stdin);
+    
+    // limit[0] = 0;
+    // for(int i = 0, j = 1; s[i]!='\n'; i++){
+    //     if(s[i]==' '){
+    //         limit[j++] = i + 1;
+    //     }
+    //     limit[j] = i + 1;
+    //     I = j;
+    // }
+    
+    // for(int i = 0; i < I; i++){
+    //     for(int j = i+1; j<I; j++){
+    //         if( checkString(s, limit[i], limit[i+1]-1, limit[j], limit[j+1]-1) == 1 ){
+    //             diff++;
+    //         }
+    //     }
+    // }
+
+    // printf("%d", diff);
+    
+    // //check if string is sentence
+    // char s[50];
+    // int N;
+    // fgets(s, sizeof(s) , stdin);
+
+    // for(int i = 0; s[i]!= '\n'; i++){
+    //     N=i;
+    // }
+
+    // if( isSentence(s, N) == 1)
+    //     printf("True");
+    // else
+    //     printf("False");
+
 
     return 0;
 }
