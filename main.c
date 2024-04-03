@@ -73,6 +73,10 @@ int isSentence(char s[50], int N){
 
 }
 
+void binar(int, char *);
+
+int pw(int, int);
+
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
     // //Program treba da odredi sumu elemenata iz nepranih vrsta kao i sumu elemenata na glavnoj matrici
@@ -367,9 +371,10 @@ int main(){
 
     // printf("c1: %d\nc2: %d\nc4: %d\nc8: %d\n", c1, c2, c4, c8);
 
-    // //recognize a number in string and turn it to integer
-    // long long int x = 0;
+    // //recognize a number in string and turn it to integer and sum
+    // long long int x;
     // int ind = 1;
+    // int sum = 0;
     // char s[20];
     // printf("Enter string: ");
     // fgets(s, sizeof(s), stdin);
@@ -377,22 +382,25 @@ int main(){
     // for(int i = 0; i<sizeof(s) && s[i]!='\0'; i++){
     //     if(s[i]>= '0' && s[i]<= '9'){
     //         ind = 0;
-    //         for(int j = i; s[j]>= '0' && s[j]<= '9'; j++){
-    //             int c = (int)s[j] - (int)'0';
+    //         x = 0;
+    //         for(i; s[i]>= '0' && s[i]<= '9'; i++){
+    //             int c = (int)s[i] - (int)'0';
     //             x += c;
     //             x *= 10;
 
     //         }
     //         x /= 10;
-    //         break;
+    //         sum += x;
     //     }   
     // }   
 
 
     // if(ind)
-    //     printf("Number not found");
+    //     printf("Number not found\n");
     // else
     //     printf("x: %llu\n", x);
+
+    // printf("sum: %d\n", sum);
 
     // //Broj razlicitih rijeci u stringu
     // char s[50];
@@ -432,6 +440,46 @@ int main(){
     // else
     //     printf("False");
 
+    // //decimal to bin in string
+    // int n;
+    // char s[50];
+    // printf("Enter number:\n");
+    // scanf("%d", &n);
+
+    // binar(n, s);
+    
+    // puts(s);
 
     return 0;
+}
+
+int pw(int x, int n){
+    int p = 1;
+    if(n>1)
+        for(int i = 1; i<n; i++ ){
+            p *= x;
+        }
+    else if(n==1)
+        return x;
+
+    return p;
+}
+
+void binar(int n, char *s){
+    int j;
+    char c;
+    for(int i = 0; n>0; i++){
+        s[i] = n%2 + '0';
+        n /= 2;
+        j = i;
+    }
+
+    s[j+1]='\0';
+
+    for(int i = 0; i<j; i++, j-- ){
+        c = s[i];
+        s[i]=s[j];
+        s[j] = c;
+    }
+
 }
