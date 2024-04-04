@@ -2,13 +2,16 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/amarcirgic/Library/CloudStorage/OneDrive-Personal/Documents/Programming_MacOs/C/etf/c_practice/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _show_array, symObjAddr: 0x0, symBinAddr: 0x100003818, symSize: 0x8C }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _show_array, symObjAddr: 0x0, symBinAddr: 0x100003818, symSize: 0x8C }
-  - { offsetInCU: 0x81, offset: 0x81, size: 0x8, addend: 0x0, symName: _show_2d_array, symObjAddr: 0x8C, symBinAddr: 0x1000038A4, symSize: 0xDC }
-  - { offsetInCU: 0xDD, offset: 0xDD, size: 0x8, addend: 0x0, symName: _pwd, symObjAddr: 0x168, symBinAddr: 0x100003980, symSize: 0xA4 }
-  - { offsetInCU: 0x12F, offset: 0x12F, size: 0x8, addend: 0x0, symName: _checkString, symObjAddr: 0x20C, symBinAddr: 0x100003A24, symSize: 0x194 }
-  - { offsetInCU: 0x1D5, offset: 0x1D5, size: 0x8, addend: 0x0, symName: _isSentence, symObjAddr: 0x3A0, symBinAddr: 0x100003BB8, symSize: 0x10C }
-  - { offsetInCU: 0x227, offset: 0x227, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x4AC, symBinAddr: 0x100003CC4, symSize: 0x90 }
-  - { offsetInCU: 0x25F, offset: 0x25F, size: 0x8, addend: 0x0, symName: _binar, symObjAddr: 0x53C, symBinAddr: 0x100003D54, symSize: 0x118 }
-  - { offsetInCU: 0x2EC, offset: 0x2EC, size: 0x8, addend: 0x0, symName: _pw, symObjAddr: 0x654, symBinAddr: 0x100003E6C, symSize: 0xB0 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _show_array, symObjAddr: 0x0, symBinAddr: 0x100003474, symSize: 0x8C }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _show_array, symObjAddr: 0x0, symBinAddr: 0x100003474, symSize: 0x8C }
+  - { offsetInCU: 0x81, offset: 0x81, size: 0x8, addend: 0x0, symName: _show_2d_array, symObjAddr: 0x8C, symBinAddr: 0x100003500, symSize: 0xDC }
+  - { offsetInCU: 0xDD, offset: 0xDD, size: 0x8, addend: 0x0, symName: _pwd, symObjAddr: 0x168, symBinAddr: 0x1000035DC, symSize: 0xA4 }
+  - { offsetInCU: 0x12F, offset: 0x12F, size: 0x8, addend: 0x0, symName: _checkString, symObjAddr: 0x20C, symBinAddr: 0x100003680, symSize: 0x194 }
+  - { offsetInCU: 0x1D5, offset: 0x1D5, size: 0x8, addend: 0x0, symName: _isSentence, symObjAddr: 0x3A0, symBinAddr: 0x100003814, symSize: 0x10C }
+  - { offsetInCU: 0x227, offset: 0x227, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x4AC, symBinAddr: 0x100003920, symSize: 0x160 }
+  - { offsetInCU: 0x270, offset: 0x270, size: 0x8, addend: 0x0, symName: _quon, symObjAddr: 0x60C, symBinAddr: 0x100003A80, symSize: 0x13C }
+  - { offsetInCU: 0x2FC, offset: 0x2FC, size: 0x8, addend: 0x0, symName: _poredi, symObjAddr: 0x748, symBinAddr: 0x100003BBC, symSize: 0xB8 }
+  - { offsetInCU: 0x344, offset: 0x344, size: 0x8, addend: 0x0, symName: _spoji, symObjAddr: 0x800, symBinAddr: 0x100003C74, symSize: 0xC0 }
+  - { offsetInCU: 0x3A5, offset: 0x3A5, size: 0x8, addend: 0x0, symName: _pw, symObjAddr: 0x8C0, symBinAddr: 0x100003D34, symSize: 0xB0 }
+  - { offsetInCU: 0x40A, offset: 0x40A, size: 0x8, addend: 0x0, symName: _binar, symObjAddr: 0x970, symBinAddr: 0x100003DE4, symSize: 0x118 }
 ...

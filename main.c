@@ -77,6 +77,12 @@ void binar(int, char *);
 
 int pw(int, int);
 
+void quon(char *, char);
+
+void spoji(char *, char *);
+
+int poredi(char *, char *);
+
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
     // //Program treba da odredi sumu elemenata iz nepranih vrsta kao i sumu elemenata na glavnoj matrici
@@ -450,6 +456,34 @@ int main(){
     
     // puts(s);
 
+    // //remove c from 2 strings and add one to the other if the same after c removal
+    // char s1[30], s2[30], c;
+
+    // printf("Enter s1: ");
+    // fgets(s1, sizeof(s1), stdin);
+    // printf("Enter s1: ");
+    // fgets(s2, sizeof(s1), stdin);
+
+    // printf("Enter c: \n");
+    // scanf("%c", &c);
+
+    // sscanf(s1, "%s", s1);
+    // sscanf(s2, "%s", s2);
+
+
+    // quon(s1, c);
+    // quon(s2, c);
+
+    // puts(s1);
+    // puts(s2);
+
+    // if(poredi(s1, s2)){
+    //     spoji(s1, s2);
+    // }
+
+    // puts(s1);
+
+
     return 0;
 }
 
@@ -482,4 +516,42 @@ void binar(int n, char *s){
         s[j] = c;
     }
 
+}
+
+void quon(char *s, char c){
+    for( int i = 0; s[i]!='\n'; i++){
+        if(s[i]==c)
+            s[i] = ' ';
+    }
+
+    for( int i = 0; s[i]!= '\0'; i++){
+        if(s[i]==' '){
+            for(int j = i; s[j]!='\0'; j++){
+                s[j] = s[j+1];
+
+            }
+        }
+    }
+}
+
+void spoji(char *s1, char *s2){
+    int I;
+    for(I = 0; s1[I]!='\0'; I++){
+
+    }
+
+    for(int i = 0; s2[i]!='\0'; I++, i++){
+        s1[I] = s2[i];
+    }
+    s1[I] = '\0';
+}
+
+int poredi(char *s1, char *s2){
+    int i = 0;
+    while(s1[i]!='\0' && s2[i]!='\0'){
+        if(s1[i]!=s2[i])
+            return 0;
+        i++;
+    }
+    return 1;
 }
