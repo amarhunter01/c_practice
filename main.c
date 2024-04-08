@@ -83,6 +83,8 @@ void spoji(char *, char *);
 
 int poredi(char *, char *);
 
+int check_bra(int, int, int);
+
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
     // //Program treba da odredi sumu elemenata iz nepranih vrsta kao i sumu elemenata na glavnoj matrici
@@ -483,6 +485,13 @@ int main(){
 
     // puts(s1);
 
+    //check for valid brackets
+    int n; 
+    printf("Enter n: \n");
+    scanf("%d", &n);
+
+    printf("Numbers of valid brackets: %d\n", check_bra(n, 0, 0));
+
 
     return 0;
 }
@@ -554,4 +563,26 @@ int poredi(char *s1, char *s2){
         i++;
     }
     return 1;
+}
+
+int check_bra(int n, int r, int l){
+    
+    if(n>l){
+        if(l>r)
+            return 0+check_bra(n, r+1, l);
+        else if(n!=0 && l == 0 && r == 0)
+            return 0+check_bra(n, r, l+1);
+        else if(l==r)
+            return 1+check_bra(n, r, l+1);
+
+    } else if(n==l && n != 0){
+        if(l>r)
+            return 0+check_bra(n, r+1, l);
+        else if(l==r)
+            return 1;
+    } else if(n == 0)
+        return 0;
+
+
+    return 0;
 }
