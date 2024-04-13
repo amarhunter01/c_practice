@@ -472,7 +472,6 @@ int main(){
     // sscanf(s1, "%s", s1);
     // sscanf(s2, "%s", s2);
 
-
     // quon(s1, c);
     // quon(s2, c);
 
@@ -486,11 +485,11 @@ int main(){
     // puts(s1);
 
     //check for valid brackets
-    int n; 
-    printf("Enter n: \n");
-    scanf("%d", &n);
+    // int n; 
+    // printf("Enter n: \n");
+    // scanf("%d", &n);
 
-    printf("Numbers of valid brackets: %d\n", check_bra(n, 0, 0));
+    // printf("Numbers of valid brackets: %d\n", check_bra(n, 0, 0));
 
 
     return 0;
