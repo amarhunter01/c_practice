@@ -491,8 +491,42 @@ int main(){
 
     // printf("Numbers of valid brackets: %d\n", check_bra(n, 0, 0));
 
+    // //remove n number of digits in entered number
+    // char s[50], max;
+    // int n, max_i; 
+    // printf("Enter number: ");
+    // scanf("%s", s);
+    // printf("How many digits should be returned? ");
+    // scanf("%d", &n);
+    // for(int i = 0; s[i+1]!= '\0' && n>0; i++){
+    //     if(s[i]>s[i+1]){
+    //         for(int j = i; s[j]!='\0'; j++){
+    //             s[j] = s[j+1];
+    //         }
+    //         n--;
+    //     }
+    // }
+
+    // while(n>0){
+    //     max = s[0];
+    //     max_i = 0;
+    //     for(int i = 0; s[i]!='\0'; i++){
+    //         if(s[i]>max){
+    //             max_i = i;
+    //             max = s[i];
+    //         }
+    //     }
+    //     for(int i = max_i; s[i]!='\0'; i++){
+    //         s[i] = s[i+1];
+    //     }
+    //     n--;
+    // }
+
+    // printf("%s", s);
+
 
     return 0;
+
 }
 
 int pw(int x, int n){
