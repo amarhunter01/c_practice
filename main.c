@@ -599,13 +599,13 @@ int main(){
     // worker staff[20];
     // FILE *f = fopen("workers.txt", "r");
     // // with fscanf()
-    // // for(int i = 0; fscanf(f, "%s %s %d", &staff[i].name, &staff[i].lastname, &staff[i].age) != EOF; i++){
+    // // for(int i = 0; fscanf(f, "%s %s %d", staff[i].name, staff[i].lastname, &staff[i].age) != EOF; i++){
     // //     printf("Worker %d:\nName: %s\nLastname: %s\nAge: %d\n", i+1, staff[i].name, staff[i].lastname, staff[i].age);
     // //     printf("--------------------------\n");
     // // }
     // // with fgets()
     // for(int i = 0; fgets(line, n, f) != NULL; i++ ){
-    //     sscanf(line, "%s %s %d", &staff[i].name, &staff[i].lastname, &staff[i].age);
+    //     sscanf(line, "%s %s %d", staff[i].name, staff[i].lastname, &staff[i].age);
     //     printf("Worker %d:\nName: %s\nLastname: %s\nAge: %d\n", i+1, staff[i].name, staff[i].lastname, staff[i].age);
     //     printf("--------------------------\n");
     // }
