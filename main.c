@@ -1,5 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+typedef struct {
+    char name[20];
+    char lastname[20];
+    int age; 
+} worker;
 
 void show_array(int a[50],int n){
     int i = 0;
@@ -84,6 +91,12 @@ void spoji(char *, char *);
 int poredi(char *, char *);
 
 int check_bra(int, int, int);
+
+void sort_names(char (*)[20], int);
+
+int isLessStr(char *, char *);
+
+int* reduce_to_limit(int *, int);
 
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
@@ -524,9 +537,119 @@ int main(){
 
     // printf("%s", s);
 
+    // //sort names
+    // int n;
+    // char names[100][20];
+    // printf("Enter n: ");
+    // scanf("%d", &n);
+    // for(int i = 0; i<n; i++){
+    //     scanf("%s", names[i]);
+    // }
 
+    // sort_names(names, n);
+
+    // printf("\n_________________________\n");
+    // for(int i = 0; i<n; i++){
+    //     printf("%s\n", names[i]);
+    // }
+    // printf("_________________________\n");
+
+    // //return array from function that has reudced numbers that are over limit
+    // int *x, *y, n;
+    // printf("Enter n: ");
+    // scanf("%d", &n);
+    // #include <stdlib.h>
+
+    // x = (int *) malloc(n*sizeof(int));
+    // if(x == NULL){
+    //     printf("Error");
+    //     exit(1);
+    // }
+    // printf("Enter array:\n");
+    // for(int i = 0; i<n; i++){
+    //     printf("Element [%d]: ", i);
+    //     scanf("%d", &x[i]);
+    // }
+    // y = reduce_to_limit(x, n);
+
+    // printf("y: ");
+    // for(int i = 0; i<n; i++){
+    //     printf("%d ", y[i]);
+    // }
+
+    // // lowercase letters in file
+    // FILE *f;
+    // char ch;
+    // int count = 0;
+    // f = fopen("./log.txt", "r");
+    // if(f == NULL) {
+    //     printf("Error");
+    //     exit(1);
+    // }
+    // while( (ch = fgetc(f)) != EOF){
+    //     if(ch>='a' && ch<='z'){
+    //         count++;
+    //     }
+    // }
+    // printf("count: %d", count);
+
+    // // from txt to array of worker
+    // int n = 100;
+    // char line[n];
+    // worker staff[20];
+    // FILE *f = fopen("workers.txt", "r");
+    // // with fscanf()
+    // // for(int i = 0; fscanf(f, "%s %s %d", &staff[i].name, &staff[i].lastname, &staff[i].age) != EOF; i++){
+    // //     printf("Worker %d:\nName: %s\nLastname: %s\nAge: %d\n", i+1, staff[i].name, staff[i].lastname, staff[i].age);
+    // //     printf("--------------------------\n");
+    // // }
+    // // with fgets()
+    // for(int i = 0; fgets(line, n, f) != NULL; i++ ){
+    //     sscanf(line, "%s %s %d", &staff[i].name, &staff[i].lastname, &staff[i].age);
+    //     printf("Worker %d:\nName: %s\nLastname: %s\nAge: %d\n", i+1, staff[i].name, staff[i].lastname, staff[i].age);
+    //     printf("--------------------------\n");
+    // }
+    
+    
     return 0;
+}
 
+int* reduce_to_limit(int *x, int n){
+    int *y = (int *) malloc(n*sizeof(int)); 
+    int limit = 5;
+    for(int i = 0; i<n; i++){
+        if(x[i]>limit)
+            y[i] = limit;
+        else 
+            y[i] = x[i];
+    }
+
+    return y;
+}
+
+int isLessStr(char *s1, char *s2){
+    int i;
+    for(i = 0; s1[i] != '\0' && s2[i] != '\0'; i++){
+        if(s1[i]!=s2[i]){
+            break;
+        }
+    }
+    if (s2[i]<s1[i])
+        return 1;
+    return 0;
+}
+
+void sort_names(char (*names)[20], int n){
+    char h[20];
+    for(int i = 0; i<n-1; i++){
+        for(int j = 0; j<n; j++)
+            if (isLessStr(names[i], names[j])){
+                strcpy(h, names[i]);
+                strcpy(names[i], names[j]);
+                strcpy(names[j], h);
+            }
+    }
+        
 }
 
 int pw(int x, int n){
