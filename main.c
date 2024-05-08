@@ -3,6 +3,12 @@
 #include <stdlib.h>
 
 typedef struct {
+    int n;
+    struct list *next;
+} list;
+
+
+typedef struct {
     char name[20];
     char lastname[20];
     int age; 
@@ -97,6 +103,14 @@ void sort_names(char (*)[20], int);
 int isLessStr(char *, char *);
 
 int* reduce_to_limit(int *, int);
+
+void print_list(list *);
+
+list* add_start(list *, list*);
+
+void add_end(list *, list *);
+
+float find_aritmetic(list *);
 
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
@@ -609,10 +623,95 @@ int main(){
     //     printf("Worker %d:\nName: %s\nLastname: %s\nAge: %d\n", i+1, staff[i].name, staff[i].lastname, staff[i].age);
     //     printf("--------------------------\n");
     // }
+
+    // //function to print list, add element at the end, at the start, aritmetic sum
+    // int n;
+    // list *head;
+    // list *cur;
+    // list *prev;
+    // list *last;
+    // list *first;
+    // printf("Enter n: ");
+    // scanf("%d", &n);
+    // if(n>0){
+    //     head = (list *) malloc(sizeof(list));
+    //     if(head == NULL){
+    //         printf("Error");
+    //         exit(1);
+    //     }
+    //     printf("Enter element 1: ");
+    //     scanf("%d", &head->n);
+    //     prev = head;
+        
+    // }
+    // for(int i = 1; i<n; i++){
+    //     cur = NULL;
+    //     cur = (list *) malloc(sizeof(list));
+    //     if(cur == NULL){
+    //         printf("Error");
+    //         exit(1);
+    //     }
+    //     printf("Enter element %d: ", i+1);
+    //     scanf("%d", &cur->n);
+    //     prev->next = cur;
+    //     prev = cur;
+        
+    // }
+
+    // print_list(head);
     
+    // printf("Enter element to be added at the end: ");
+    // last = (list *) malloc(sizeof(list));
+    // scanf("%d", &last->n);
+
+    // add_end(head, last);
+
+    // printf("Enter element to be added at the start: ");
+    // first = (list *) malloc(sizeof(list));
+    // scanf("%d", &first->n);
+
+    // head = add_start(head, first);
+
+    // printf("Aritmetic mean: %f", find_aritmetic(head) );
+
+    // print_list(head);
+
     
     return 0;
 }
+
+void print_list(list *head){
+    printf("\n------------------------\n");
+    printf("list: \n");
+    while(head != NULL){
+        printf("%d ", head->n);
+        head = (list *) head->next;
+    }
+    printf("\n------------------------\n");
+}
+
+void add_end(list *head, list *element){
+    while(head->next !=  NULL){
+        head =  (list *) head->next;
+    }
+    head->next = (struct list *) element;
+}
+
+list* add_start(list *head, list *element){
+    element->next = (struct list *) head;
+    return element;
+}
+
+float find_aritmetic(list *head){
+    int i = 0, sum = 0;
+    while(head != NULL){
+        sum += head->n;
+        i++;
+        head = (list *)head -> next;   
+    }
+    return (float) sum/i;
+}
+
 
 int* reduce_to_limit(int *x, int n){
     int *y = (int *) malloc(n*sizeof(int)); 
