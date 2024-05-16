@@ -112,6 +112,8 @@ void add_end(list *, list *);
 
 float find_aritmetic(list *);
 
+int check_str(char *, char *);
+
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
     // //Program treba da odredi sumu elemenata iz nepranih vrsta kao i sumu elemenata na glavnoj matrici
@@ -676,8 +678,75 @@ int main(){
 
     // print_list(head);
 
+    //load word and print the line that is the longest
+    char l[80], word[80], user_word[80], max_line[80];
+    int max = 0, curr;
+    FILE *f;
+
+    puts("Enter word: ");
+    scanf("%s", user_word);
+
+    f = fopen("./words.txt", "r");
+    if(f == NULL){
+        printf("Error");
+        exit(1);
+    }
+
+    while( fgets(l, sizeof(l), f) != NULL ){
+        for(int i = 0, j = 0; l[i] != '\0'; i++){
+            if(l[i] >= 'a' && l[i]<='z'){
+                word[j] = l[i]; 
+                word[++j] = '\0';
+            } else if (l[i] == ' ' || l[i] == '\0' || l[i] == '\n'){
+                j = 0;
+                if( check_str(word, user_word) ){
+                    curr= 0;
+                    while(l[curr]!= '\0'){
+                        curr++;
+                    }
+                    if(curr > max){
+                        max = curr;
+                        strcpy(max_line, l);
+                    }
+                }
+            }
+
+        }
+        if( check_str(word, user_word) ){
+            curr = 0;
+            while(l[curr]!= '\0'){
+                curr++;
+            }
+            if(curr > max){
+                max = curr;
+                strcpy(max_line, l);
+            }
+        }
+
+        
+    }
+
+    printf("%s", max_line);
+    fclose(f);
     
     return 0;
+}
+
+int check_str(char *s1, char *s2){
+    int i = 0;
+    while(s1[i] != '\0' && s2[i] != '\0'){
+        if(s1[i] != s2[i]){
+            return 0;
+        }
+        // if(s1[i+1]=='\n')
+        i++;
+    }
+
+    if(s1[i] == s2[i]){
+        return 1;
+    } else { 
+        return 0;
+    }
 }
 
 void print_list(list *head){
