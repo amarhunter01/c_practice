@@ -2,7 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct {
+typedef struct list {
+    char str[25];
     int n;
     struct list *next;
 } list;
@@ -113,6 +114,14 @@ void add_end(list *, list *);
 float find_aritmetic(list *);
 
 int check_str(char *, char *);
+
+void print_list_int_str(list *);
+
+void remove_with_ch(list *);
+
+void make_on_lenstr(list *);
+
+list* reverse_list(list *);
 
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
@@ -678,58 +687,177 @@ int main(){
 
     // print_list(head);
 
-    //load word and print the line that is the longest
-    char l[80], word[80], user_word[80], max_line[80];
-    int max = 0, curr;
-    FILE *f;
+    // //load word and print the line that is the longest
+    // char l[80], word[80], user_word[80], max_line[80];
+    // int max = 0, curr;
+    // FILE *f;
 
-    puts("Enter word: ");
-    scanf("%s", user_word);
+    // puts("Enter word: ");
+    // scanf("%s", user_word);
 
-    f = fopen("./words.txt", "r");
-    if(f == NULL){
-        printf("Error");
-        exit(1);
-    }
+    // f = fopen("./words.txt", "r");
+    // if(f == NULL){
+    //     printf("Error");
+    //     exit(1);
+    // }
 
-    while( fgets(l, sizeof(l), f) != NULL ){
-        for(int i = 0, j = 0; l[i] != '\0'; i++){
-            if(l[i] >= 'a' && l[i]<='z'){
-                word[j] = l[i]; 
-                word[++j] = '\0';
-            } else if (l[i] == ' ' || l[i] == '\0' || l[i] == '\n'){
-                j = 0;
-                if( check_str(word, user_word) ){
-                    curr= 0;
-                    while(l[curr]!= '\0'){
-                        curr++;
-                    }
-                    if(curr > max){
-                        max = curr;
-                        strcpy(max_line, l);
-                    }
-                }
-            }
+    // while( fgets(l, sizeof(l), f) != NULL ){
+    //     for(int i = 0, j = 0; l[i] != '\0'; i++){
+    //         if(l[i] >= 'a' && l[i]<='z'){
+    //             word[j] = l[i]; 
+    //             word[++j] = '\0';
+    //         } else if (l[i] == ' ' || l[i] == '\0' || l[i] == '\n'){
+    //             j = 0;
+    //             if( check_str(word, user_word) ){
+    //                 curr= 0;
+    //                 while(l[curr]!= '\0'){
+    //                     curr++;
+    //                 }
+    //                 if(curr > max){
+    //                     max = curr;
+    //                     strcpy(max_line, l);
+    //                 }
+    //             }
+    //         }
 
-        }
-        if( check_str(word, user_word) ){
-            curr = 0;
-            while(l[curr]!= '\0'){
-                curr++;
-            }
-            if(curr > max){
-                max = curr;
-                strcpy(max_line, l);
-            }
-        }
+    //     }
+    //     if( check_str(word, user_word) ){
+    //         curr = 0;
+    //         while(l[curr]!= '\0'){
+    //             curr++;
+    //         }
+    //         if(curr > max){
+    //             max = curr;
+    //             strcpy(max_line, l);
+    //         }
+    //     }
 
         
-    }
+    // }
 
-    printf("%s", max_line);
-    fclose(f);
+    // printf("%s", max_line);
+    // fclose(f);
+
+    // //remove every node thats string starts with char like head reverse and makes new node that has length of string and number -1
+    // list *head = NULL;
+    // list *curr = NULL;
+    // list *prev = NULL;
+    // int n;
+    // printf("Enter n: ");
+    // scanf("%d", &n);
+    
+    // if(n>0){
+    //     head = (list *) malloc(sizeof(head));
+    //     if(head == NULL){
+    //         printf("error");
+    //         exit(1);
+    //     }
+    //     printf("Enter string of node 1: ");
+    //     scanf("%s", head->str);
+    //     printf("Enter n of node 1: ");
+    //     scanf("%d", &head->n);
+    //     prev = head;
+    // }
+
+    // for(int i = 1; i<n; i++){
+    //     curr = (list *) malloc(sizeof(curr));
+    //     if(curr == NULL){
+    //         printf("error");
+    //         exit(1);
+    //     }
+    //     printf("Enter string of node %d: ", i+1);
+    //     scanf("%s", curr->str);
+    //     printf("Enter n of node %d: ", i+1);
+    //     scanf("%d", &curr->n);
+    //     prev->next = curr;
+    //     prev = curr;
+    // }
+
+    // remove_with_ch(head);
+    // make_on_lenstr(head);
+    // print_list_int_str(head);
+    // head = reverse_list(head);
+    // print_list_int_str(head);
     
     return 0;
+}
+
+void remove_with_ch(list *head){
+    list *prev = head;
+    char ch;
+
+    if(head!= NULL){
+        ch = head->str[0];
+        
+    }else{
+        return;
+    }
+    head = head->next;
+    while(head != NULL){
+        if( ch == head->str[0] ){
+            prev -> next = head -> next;
+            free(head);
+            head = prev -> next;
+        } else{
+            prev = head;
+            head = head -> next;
+        }
+    } 
+}
+
+void make_on_lenstr(list *head){
+    list *next = NULL;
+    while(head != NULL){
+        next = head->next;
+        int len = 0;
+
+        head->next = (list *) malloc(sizeof(list));
+        if(head->next == NULL){
+            printf("error");
+            exit(1);
+        }
+        head->next->n = -1;
+        while(head->str[len] != '\0'){
+            len++;
+        }
+        int len_h = len;
+        for(int i = 0; len_h!= 0; i++){
+            head->next->str[i] = (char) len_h%10 + 45;
+            len_h /= 10;
+        }
+        char h;
+        for(int i = 0; i<len; i++,len--){
+            h = head->next->str[i];
+            head->next->str[i] = head->next->str[len];
+            head->next->str[len] = h;
+            
+        }
+
+        head->next->next = next;
+        head = next; 
+
+    }
+    
+}
+
+list* reverse_list(list *head){
+    list *prev = NULL, *curr = head, *next = NULL;
+    while (curr != NULL) {
+        next = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
+
+void print_list_int_str(list *head){
+    printf("\n---------------------------\n");
+    while(head!= NULL){
+        printf("str: %s, n: %d\n", head->str, head->n);
+        head = head->next;
+    }
+    printf("---------------------------\n");
 }
 
 int check_str(char *s1, char *s2){
