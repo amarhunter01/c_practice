@@ -15,6 +15,12 @@ typedef struct {
     int age; 
 } worker;
 
+typedef struct tree{
+    int n;
+    struct tree *l;
+    struct tree *r;
+} tree;
+
 void show_array(int a[50],int n){
     int i = 0;
     printf("Start of array\n");
@@ -122,6 +128,10 @@ void remove_with_ch(list *);
 void make_on_lenstr(list *);
 
 list* reverse_list(list *);
+
+int get_num_even(tree *);
+
+void enter_tree(tree *, int);
 
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
@@ -778,8 +788,72 @@ int main(){
     // print_list_int_str(head);
     // head = reverse_list(head);
     // print_list_int_str(head);
-    
+
+    // //return number of nodes whoes parents are even
+    // //enter_tree works in preorder
+    // tree *root = NULL;
+    // root = (tree *) malloc(sizeof(tree));
+    // if(root ==  NULL){
+    //     printf("error");
+    //     exit(1);
+    // }
+    // enter_tree(root, 1);
+
+    // printf("%d", get_num_even(root));
+
     return 0;
+}
+
+void enter_tree(tree *root, int i){
+    printf("Enter n for node on height %d: ", i);
+    scanf("%d", &(root -> n));
+
+    int l;
+    printf("Is there left ('1' for Yes or '0' for No): " );
+    scanf("%d", &l);
+    if(l){
+        root->l =  (tree *) malloc(sizeof(tree));
+        if(root -> l ==  NULL ){
+            printf("error");
+            exit(1);
+        }
+        printf("Created!\n");
+        if(root -> l != NULL){
+            enter_tree(root->l, i+1);
+        }
+    }
+
+    printf("Is there right ('1' for Yes or '0' for No): " );
+    int r;
+    scanf("%d", &r);
+    if(r){
+        root -> r = (tree *) malloc(sizeof(tree));
+        if(root -> r == NULL ){
+            printf("error");
+            exit(1);
+        }
+        printf("Created!\n");
+        if(root -> r != NULL){
+            enter_tree(root->r, i+1);
+        }
+    }
+}
+
+int get_num_even(tree *root){
+    if(root != NULL){
+        if(root -> n % 2 == 0){
+            if(root -> l != NULL && root -> r != NULL){
+                return 2+get_num_even(root->l) + get_num_even(root->r);
+            }else if(root -> l != NULL || root -> r != NULL){
+                return 1+get_num_even(root->l) + get_num_even(root->r);
+            } else{
+                return 0;
+            }
+        }else {
+            return get_num_even(root->l) + get_num_even(root->r);
+        }
+    }else
+        return 0;
 }
 
 void remove_with_ch(list *head){
