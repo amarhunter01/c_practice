@@ -133,6 +133,10 @@ int get_num_even(tree *);
 
 void enter_tree(tree *, int);
 
+void enter_tree_level(tree *, int);
+
+void inorder(tree *);
+
 int main(){
     // //Napisati program kojim se ucitava matrica cijelih brojeva A, dimenzija MxN. 
     // //Program treba da odredi sumu elemenata iz nepranih vrsta kao i sumu elemenata na glavnoj matrici
@@ -800,8 +804,95 @@ int main(){
     // enter_tree(root, 1);
 
     // printf("%d", get_num_even(root));
+    
+    // //better enter tree function
+    // //goes left 
+    // tree *root = (tree *) malloc(sizeof(tree));
+    // if(root == NULL){
+    //     printf("error\n");
+    //     exit(1);
+    // }
+    // printf("Enter n for node on level 1: ");
+    // scanf("%d", &root->n);
+
+    // int l;
+    // printf("Is there left node on level 2 (enter '1' for YES and '0' for NO): ");
+    // scanf("%d", &l);
+
+    // if(l){
+    //     root -> l = (tree *) malloc(sizeof(tree));
+    //     if(root -> l == NULL){
+    //         printf("error");
+    //         exit(1);
+    //     }
+    //     printf("Enter n for left node on level 2: ");
+    //     scanf("%d", &root->l -> n);
+    // }
+
+    // int r;
+    // printf("Is there right node on level 2 (enter '1' for YES and '0' for NO): ");
+    // scanf("%d", &r);
+
+    // if(r){
+    //     root -> r = (tree *) malloc(sizeof(tree));
+    //     if(root -> r == NULL){
+    //         printf("error");
+    //         exit(1);
+    //     }
+    //     printf("Enter n for right node on level 2: ");
+    //     scanf("%d", &root->r -> n);
+    // }
+
+    // enter_tree_level(root->l, 2);
+    // enter_tree_level(root->r, 2);
+
+    // inorder(root);
 
     return 0;
+}
+
+void inorder(tree *root){
+    if(root != NULL){
+        inorder(root->l);
+        printf("%d ", root->n);
+        inorder(root->r);
+    }
+}
+
+void enter_tree_level(tree *root, int i){
+
+    if(root != NULL){
+        int l;
+        printf("Is there left node on level %d (enter '1' for YES and '0' for NO): ", i+1);
+        scanf("%d", &l);
+
+        if(l){
+            root -> l = (tree *) malloc(sizeof(tree));
+            if(root -> l == NULL){
+                printf("error");
+                exit(1);
+            }
+            printf("Enter n for left node on level %d: ", i+1);
+            scanf("%d", &root->l -> n);
+        }
+
+        int r;
+        printf("Is there right node on level %d (enter '1' for YES and '0' for NO): ", i+1);
+        scanf("%d", &r);
+
+        if(r){
+            root -> r = (tree *) malloc(sizeof(tree));
+            if(root -> r == NULL){
+                printf("error");
+                exit(1);
+            }
+            printf("Enter n for right node on level %d: ", i+1);
+            scanf("%d", &root->r -> n);
+        }
+
+        enter_tree_level(root->l, i+1);
+        enter_tree_level(root->r, i+1);
+    }
 }
 
 void enter_tree(tree *root, int i){
